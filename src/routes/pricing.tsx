@@ -110,13 +110,9 @@ function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <button
-                type="button"
-                onClick={() => {
-                  // Stripe payment link will go here
-                  // For now, show a message
-                  alert("Stripe payment links will be configured by the team lead.");
-                }}
+              <Link
+                to="/report"
+                search={session ? { token: session } : undefined}
                 className={`mt-8 flex w-full items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition-all ${
                   plan.popular
                     ? "bg-indigo-600 text-white shadow-md hover:bg-indigo-700 hover:shadow-lg"
@@ -124,7 +120,7 @@ function PricingPage() {
                 }`}
               >
                 {plan.popular ? "Get Started" : plan.name === "Monthly Subscription" ? "Subscribe" : "Buy Now"}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
